@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quản lý hóa đơn</title>
+
+    <link rel="stylesheet" href="invoice.css">
+    <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+
+<body>
+
+<div class="layout">
+
+    <!-- SIDEBAR -->
+    <div class="sidebar">
+        <h2>HMS</h2>
+        <ul>
+            <li class="active">📄 Quản lý hóa đơn</li>
+            <li>🏨 Quản lý phòng</li>
+            <li>👤 Khách hàng</li>
+        </ul>
+    </div>
+
+    <!-- MAIN -->
+    <div class="main">
+
+        <!-- HEADER -->
+        <div class="header">
+            <h1>Quản lý hóa đơn</h1>
+
+            <div class="actions">
+                <button class="btn primary">
+                    <i data-lucide="plus"></i> Tạo hóa đơn
+                </button>
+            </div>
+        </div>
+
+        <!-- SEARCH -->
+        <div class="search-box">
+            <i data-lucide="search"></i>
+            <input type="text" placeholder="Tìm kiếm hóa đơn...">
+        </div>
+
+        <!-- TABLE -->
+        <div class="table-container">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Mã HĐ</th>
+                        <th>Khách hàng</th>
+                        <th>Phòng</th>
+                        <th>Ngày tạo</th>
+                        <th>Tổng tiền</th>
+                        <th>Trạng thái</th>
+                        <th>Hành động</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    <tr>
+                        <td>HD001</td>
+                        <td>Nguyễn Văn A</td>
+                        <td>P101</td>
+                        <td>20/04/2026</td>
+                        <td>2,000,000đ</td>
+                        <td><span class="status paid">Đã thanh toán</span></td>
+                        <td>
+                            <button class="btn small danger">
+                                <i data-lucide="x-circle"></i>
+                            </button>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>HD002</td>
+                        <td>Trần Thị B</td>
+                        <td>P202</td>
+                        <td>21/04/2026</td>
+                        <td>1,500,000đ</td>
+                        <td><span class="status pending">Chưa thanh toán</span></td>
+                        <td>
+                            <button class="btn small danger">
+                                <i data-lucide="x-circle"></i>
+                            </button>
+                        </td>
+                    </tr>
+                </tbody>
+
+            </table>
+        </div>
+
+    </div>
+
+</div>
+
+<script>
+    lucide.createIcons();
+</script>
+
+</body>
+</html>

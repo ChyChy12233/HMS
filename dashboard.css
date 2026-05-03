@@ -1,0 +1,169 @@
+/* RESET */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Segoe UI", Arial, sans-serif;
+}
+
+body {
+  background: #f4f6f9;
+}
+
+/* LAYOUT */
+.layout {
+  display: flex;
+  min-height: 100vh;
+}
+
+/* ================= SIDEBAR ================= */
+.sidebar {
+  width: 260px;
+  background: linear-gradient(180deg, #081f3a, #0a2540);
+  color: white;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+.sidebar h2 {
+  margin-bottom: 20px;
+  font-size: 22px;
+}
+
+/* MENU TITLE */
+.menu-title {
+  margin-top: 20px;
+  font-size: 12px;
+  color: #9ca3af;
+  text-transform: uppercase;
+}
+
+/* MENU ITEM */
+.sidebar a {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px;
+  border-radius: 10px;
+  color: white;
+  text-decoration: none;
+  transition: 0.25s;
+  margin-top: 5px;
+}
+
+.sidebar a:hover {
+  background: rgba(255,255,255,0.1);
+  transform: translateX(5px);
+}
+
+/* ACTIVE */
+.sidebar a.active {
+  background: white;
+  color: #0a2540;
+  font-weight: 600;
+}
+
+/* ICON */
+.sidebar i {
+  width: 18px;
+  height: 18px;
+}
+
+/* ================= ADMIN BUTTON ================= */
+.admin-box {
+  margin-top: auto;
+}
+
+.create-btn {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 14px;
+  border-radius: 12px;
+  background: linear-gradient(135deg, #ffd700, #ffb300);
+  color: black;
+  font-weight: bold;
+  text-decoration: none;
+  transition: 0.3s;
+}
+
+.create-btn:hover {
+  transform: scale(1.05);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.25);
+}
+
+/* ================= MAIN ================= */
+.main {
+  flex: 1;
+  padding: 30px;
+}
+
+/* TOPBAR */
+.topbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.topbar h1 {
+  font-size: 28px;
+}
+
+.topbar div {
+  background: white;
+  padding: 8px 14px;
+  border-radius: 10px;
+  font-size: 14px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+}
+
+/* ================= CARDS ================= */
+.cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* 👈 3 card */
+  gap: 20px;
+  margin-top: 20px;
+}
+
+.card {
+  background: white;
+  padding: 20px;
+  border-radius: 15px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+  transition: 0.25s;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+}
+
+/* CARD TEXT */
+.card h3 {
+  font-size: 16px;
+  color: #6b7280;
+}
+
+.card h1 {
+  margin-top: 10px;
+  font-size: 28px;
+  color: #111827;
+}
+
+.card p {
+  margin-top: 5px;
+  font-size: 14px;
+  color: #6b7280;
+}
+
+/* ================= RESPONSIVE ================= */
+@media (max-width: 1000px) {
+  .cards {
+    grid-template-columns: 1fr;
+  }
+
+  .sidebar {
+    width: 200px;
+  }
+}
