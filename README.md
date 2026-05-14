@@ -11,6 +11,11 @@
 \- Invoice management
 
 \- Report statistics
+Facility management:
+\- Add facility
+\- Update facility information
+\- Delete facility
+\- View facility list
 
 \## Tech
 
