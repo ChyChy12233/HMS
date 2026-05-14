@@ -7,7 +7,9 @@ if (!isset($_SESSION['user'])) {
 }
 
 $user = $_SESSION['user'];
-$role = $_SESSION['role'];
+
+// ✅ FIX: chuẩn hóa role (tránh lỗi Admin ≠ admin)
+$role = strtolower(trim($_SESSION['role']));
 ?>
 
 <!DOCTYPE html>
@@ -32,22 +34,62 @@ $role = $_SESSION['role'];
 
   <!-- STAFF -->
   <p class="menu-title">Nhân viên</p>
-  <a><i data-lucide="user"></i> Quản lý khách hàng</a>
-  <a><i data-lucide="calendar-check"></i> Quản lý đặt phòng</a>
-  <a><i data-lucide="file-text"></i> Quản lý hóa đơn</a>
-  <a><i data-lucide="bed"></i> Quản lý sử dụng phòng</a>
-  <a><i data-lucide="send"></i> Gửi báo cáo sự cố</a>
+  <a href="customer_list.php"><i data-lucide="user"></i> Quản lý khách hàng</a>
+
+  <a href="room_list.php">
+    <i data-lucide="bed"></i> Quản lý phòng
+  </a>
+
+  <a href="booking_checkin.php">
+    <i data-lucide="calendar-plus"></i> Quản lý đặt phòng
+  </a>
+
+  <!-- 🔥 FIX: thêm link -->
+  <a href="invoice_list.php">
+    <i data-lucide="file-text"></i> Quản lý hóa đơn
+  </a>
+
+  <a href="room_usage.php">
+    <i data-lucide="bed"></i> Quản lý sử dụng phòng
+  </a>
+
+  <a href="incident_report.php">
+    <i data-lucide="send"></i> Gửi báo cáo sự cố
+  </a>
 
   <!-- MANAGER -->
   <?php if ($role == 'manager' || $role == 'admin'): ?>
     <p class="menu-title">Quản lý</p>
-    <a><i data-lucide="users"></i> Quản lý nhân sự</a>
-    <a><i data-lucide="coffee"></i> Quản lý dịch vụ</a>
-    <a><i data-lucide="home"></i> Quản lý loại phòng</a>
-    <a><i data-lucide="alert-triangle"></i> Quản lý sự cố</a>
-    <a><i data-lucide="building"></i> Quản lý cơ sở vật chất</a>
-    <a><i data-lucide="box"></i> Quản lý kho tiện nghi</a>
-    <a><i data-lucide="bar-chart"></i> Báo cáo thống kê</a>
+
+    <a href="staff_list.php">
+      <i data-lucide="users"></i> Quản lý nhân sự
+    </a>
+
+    <a href="service_list.php">
+      <i data-lucide="coffee"></i> Quản lý dịch vụ
+    </a>
+
+    <a href="room_type_list.php">
+      <i data-lucide="home"></i> Quản lý loại phòng
+    </a>
+
+    <a href="incident_list.php">
+      <i data-lucide="alert-triangle"></i> Quản lý sự cố
+    </a>
+
+    <a href="facility_list.php">
+      <i data-lucide="building"></i> Quản lý cơ sở vật chất
+    </a>
+
+    <a href="facility.php">
+      <i data-lucide="box"></i> Quản lý kho tiện nghi
+    </a>
+
+    <!-- 🔥 FIX: thêm link -->
+    <a href="revenue_report.php">
+      <i data-lucide="bar-chart"></i> Báo cáo thống kê
+    </a>
+
   <?php endif; ?>
 
   <!-- ADMIN -->
@@ -66,7 +108,9 @@ $role = $_SESSION['role'];
 
   <div class="topbar">
     <h1>Dashboard</h1>
-    <div>👤 <?php echo $user; ?> (<?php echo $role; ?>)</div>
+
+    <!-- 👇 hiển thị role đã chuẩn hóa -->
+    <div>👤 <?php echo $user; ?> (<?php echo strtoupper($role); ?>)</div>
   </div>
 
   <p>Chào mừng bạn đến hệ thống quản lý khách sạn</p>

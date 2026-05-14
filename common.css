@@ -1,0 +1,80 @@
+/* ================= RESET ================= */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* ================= BODY ================= */
+body {
+  font-family: "Segoe UI", Arial, sans-serif;
+  background: linear-gradient(135deg, #0a2540, #081f3a);
+  padding: 40px;
+  color: #333;
+}
+
+/* ================= CONTAINER ================= */
+.container {
+  background: white;
+  border-radius: 18px;
+  padding: 30px;
+  margin: auto;
+  max-width: 1000px;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.25);
+}
+
+/* ================= TITLE ================= */
+h2 {
+  margin-bottom: 20px;
+  color: #0a2540;
+}
+
+/* ================= BUTTON ================= */
+button,
+.btn {
+  padding: 10px 16px;
+  border-radius: 10px;
+  border: none;
+  background: #2563eb;
+  color: white;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+button:hover,
+.btn:hover {
+  background: #1e40af;
+}
+
+/* ================= ACTION ================= */
+.action {
+  display: flex;
+  gap: 8px;
+}
+
+/* ================= STATUS ================= */
+.status {
+  padding: 5px 12px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+/* ================= SEARCH ================= */
+.search-box {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.search-box input,
+.search-box select {
+  padding: 10px;
+  border-radius: 10px;
+  border: 1px solid #ddd;
+}
+
+.search-box button {
+  background: #2563eb;
+  color: white;
+}

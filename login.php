@@ -3,25 +3,23 @@ session_start();
 
 $conn = mysqli_connect("localhost", "root", "", "hotel");
 
-// LẤY DỮ LIỆU
 $username = trim($_POST['username']);
 $password = trim($_POST['password']);
 $role = $_POST['role'];
 
-// LẤY USER THEO USERNAME
-$sql = "SELECT * FROM users WHERE username='$username'";
+// LẤY USER
+$sql = "SELECT * FROM staff WHERE Username='$username'";
 $result = mysqli_query($conn, $sql);
 
-// KIỂM TRA CÓ USER KHÔNG
 if (mysqli_num_rows($result) > 0) {
 
-    $user = mysqli_fetch_assoc($result);
+    $user = mysqli_fetch_assoc($result); // 👈 QUAN TRỌNG
 
     // CHECK PASSWORD
-    if (password_verify($password, $user['password'])) {
+    if (password_verify($password, $user['Password'])) {
 
         // CHECK ROLE
-        if ($user['role'] != $role) {
+        if ($user['Role'] != $role) {
             echo "<script>
                 alert('Sai vai trò!');
                 window.location='index.html';
@@ -30,8 +28,8 @@ if (mysqli_num_rows($result) > 0) {
         }
 
         // LOGIN SUCCESS
-        $_SESSION['user'] = $user['username'];
-        $_SESSION['role'] = $user['role'];
+        $_SESSION['user'] = $user['Username'];
+        $_SESSION['role'] = $user['Role'];
 
         header("Location: dashboard.php");
         exit();

@@ -1,0 +1,54 @@
+/* ================= CONTAINER ================= */
+.container {
+  max-width: 900px;
+}
+
+/* ================= FILTER ================= */
+.search-box {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.search-box select,
+.search-box button {
+  padding: 10px;
+  border-radius: 10px;
+  border: 1px solid #ddd;
+}
+
+/* ================= TOTAL ================= */
+.total-box {
+  background: #f1f5f9;
+  padding: 15px;
+  border-radius: 12px;
+  margin-bottom: 20px;
+}
+
+.total-box span {
+  color: #2563eb;
+  font-weight: bold;
+  font-size: 20px;
+}
+
+/* ================= TABLE ================= */
+.report-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+.report-table th {
+  background: #0a2540;
+  color: white;
+  padding: 10px;
+}
+
+.report-table td {
+  padding: 10px;
+  border-bottom: 1px solid #eee;
+}
+
+.report-table tr:hover {
+  background: #f9fafb;
+}
