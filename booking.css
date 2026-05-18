@@ -1,100 +1,355 @@
 /* ================= RESET ================= */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
 }
 
-/* ================= BACKGROUND ================= */
-body {
-  font-family: "Segoe UI", Arial;
-  background: linear-gradient(135deg, #0a2540, #081f3a);
-  padding: 40px;
+/* ================= BODY ================= */
+body{
+
+    font-family:"Segoe UI",sans-serif;
+
+    background:linear-gradient(135deg,#071d36,#0a2540);
+
+    min-height:100vh;
+
+    padding:50px 20px;
 }
 
-/* ================= CARD ================= */
-.container {
-  background: white;
-  border-radius: 20px;
-  padding: 35px;
-  max-width: 500px;
-  margin: auto;
-  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.25);
+/* ================= CONTAINER ================= */
+.container{
+
+    max-width:900px;
+
+    margin:auto;
+
+    background:white;
+
+    border-radius:30px;
+
+    padding:45px;
+
+    box-shadow:0 20px 60px rgba(0,0,0,0.25);
 }
 
 /* ================= TITLE ================= */
-h2 {
-  margin-bottom: 25px;
-  color: #0a2540;
-  font-size: 22px;
+h2{
+
+    font-size:42px;
+
+    color:#082544;
+
+    margin-bottom:35px;
+
+    font-weight:700;
 }
 
 /* ================= FORM ================= */
-form {
-  display: flex;
-  flex-direction: column;
-  gap: 15px;
+form{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:22px;
+}
+
+/* ================= LABEL ================= */
+label{
+
+    font-size:14px;
+
+    font-weight:600;
+
+    color:#475569;
+
+    margin-bottom:-12px;
 }
 
 /* ================= INPUT + SELECT ================= */
-select,
-input {
-  padding: 12px 14px;
-  border-radius: 12px;
-  border: 1px solid #e5e7eb;
-  background: #f9fafb;
-  font-size: 14px;
-  transition: 0.2s;
-}
+input,
+select{
 
-/* HOVER */
-select:hover,
-input:hover {
-  border: 1px solid #cbd5e1;
+    width:100%;
+
+    padding:16px 18px;
+
+    border-radius:16px;
+
+    border:1px solid #dbe2ea;
+
+    background:#f8fafc;
+
+    font-size:15px;
+
+    outline:none;
+
+    transition:0.25s;
 }
 
 /* FOCUS */
-select:focus,
-input:focus {
-  outline: none;
-  border: 1px solid #2563eb;
-  background: white;
-  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
-}
+input:focus,
+select:focus{
 
-/* ================= DATE INPUT ================= */
-input[type="date"] {
-  cursor: pointer;
+    border-color:#2563eb;
+
+    background:white;
+
+    box-shadow:0 0 0 4px rgba(37,99,235,0.1);
 }
 
 /* ================= BUTTON ================= */
-button {
-  margin-top: 10px;
-  padding: 14px;
-  border: none;
-  border-radius: 14px;
-  background: linear-gradient(135deg, red, #1e40af);
-  color: white;
-  font-size: 15px;
-  font-weight: 600;
-  cursor: pointer;
-  transition: 0.3s;
+button{
+
+    width:100%;
+
+    background:linear-gradient(135deg,#2563eb,#1d4ed8);
+
+    color:white;
+
+    border:none;
+
+    padding:17px;
+
+    border-radius:16px;
+
+    font-size:16px;
+
+    font-weight:700;
+
+    cursor:pointer;
+
+    transition:0.25s;
 }
 
-/* HOVER BUTTON */
-button:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+/* HOVER */
+button:hover{
+
+    transform:translateY(-2px);
+
+    box-shadow:0 12px 25px rgba(37,99,235,0.3);
 }
 
-/* CLICK EFFECT */
-button:active {
-  transform: scale(0.98);
+/* ================= CUSTOMER INFO ================= */
+.customer-info{
+
+    margin-top:10px;
+
+    background:#f8fafc;
+
+    border:1px solid #e2e8f0;
+
+    border-radius:22px;
+
+    padding:25px;
 }
 
-/* ================= LABEL (optional nếu bạn thêm) ================= */
-label {
-  font-size: 13px;
-  color: #6b7280;
-  margin-bottom: 3px;
+/* INFO TITLE */
+.customer-info h3{
+
+    font-size:24px;
+
+    margin-bottom:18px;
+
+    color:#082544;
+}
+
+/* INFO TEXT */
+.customer-info p{
+
+    margin-bottom:12px;
+
+    color:#334155;
+
+    font-size:15px;
+
+    line-height:1.5;
+}
+
+/* ================= BADGE ================= */
+.vip-badge,
+.regular-badge,
+.new-badge{
+
+    display:inline-block;
+
+    padding:9px 16px;
+
+    border-radius:999px;
+
+    font-size:13px;
+
+    font-weight:700;
+
+    margin-bottom:18px;
+}
+
+/* VIP */
+.vip-badge{
+
+    background:#fef3c7;
+
+    color:#92400e;
+}
+
+/* REGULAR */
+.regular-badge{
+
+    background:#dbeafe;
+
+    color:#1d4ed8;
+}
+
+/* NEW */
+.new-badge{
+
+    background:#dcfce7;
+
+    color:#166534;
+}
+
+/* ================= VOUCHER ================= */
+.voucher-box{
+
+    margin-top:20px;
+
+    background:#eff6ff;
+
+    border-left:5px solid #2563eb;
+
+    border-radius:16px;
+
+    padding:18px;
+}
+
+/* TITLE */
+.voucher-box strong{
+
+    color:#1d4ed8;
+
+    display:block;
+
+    margin-bottom:10px;
+
+    font-size:15px;
+}
+
+/* TEXT */
+.voucher-box p{
+
+    margin:0;
+
+    font-weight:600;
+
+    color:#082544;
+}
+
+/* ================= PAYMENT ================= */
+.payment-box{
+
+    margin-top:25px;
+
+    background:#f8fafc;
+
+    border-radius:22px;
+
+    padding:25px;
+
+    border:1px solid #e2e8f0;
+}
+
+/* TITLE */
+.payment-box h3{
+
+    margin-bottom:18px;
+
+    color:#082544;
+
+    font-size:24px;
+}
+
+/* TEXT */
+.payment-box p{
+
+    margin-bottom:12px;
+
+    color:#334155;
+
+    font-size:15px;
+}
+
+/* TOTAL */
+.payment-box h2{
+
+    margin-top:18px;
+
+    color:#2563eb;
+
+    font-size:34px;
+
+    font-weight:700;
+}
+
+/* ================= TABLE ================= */
+table{
+
+    width:100%;
+
+    border-collapse:collapse;
+
+    margin-top:35px;
+
+    overflow:hidden;
+
+    border-radius:18px;
+}
+
+/* HEADER */
+th{
+
+    background:#082544;
+
+    color:white;
+
+    padding:18px;
+
+    text-align:left;
+
+    font-size:15px;
+}
+
+/* CELL */
+td{
+
+    padding:18px;
+
+    border-bottom:1px solid #f1f5f9;
+
+    font-size:15px;
+}
+
+/* ROW HOVER */
+tr:hover{
+
+    background:#f8fafc;
+}
+
+/* ================= RESPONSIVE ================= */
+@media(max-width:768px){
+
+    .container{
+
+        padding:25px;
+    }
+
+    h2{
+
+        font-size:32px;
+    }
+
+    .payment-box h2{
+
+        font-size:28px;
+    }
 }

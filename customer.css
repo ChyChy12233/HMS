@@ -1,76 +1,417 @@
-/* FORM CONTAINER */
-.form-container {
-  max-width: 900px;
-  margin: auto;
-  background: white;
-  padding: 30px;
-  border-radius: 18px;
-    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.25);;
-}
-body {
-  font-family: "Segoe UI", Arial;
-  background: linear-gradient(135deg, #0a2540, #081f3a);
-  padding: 50px;
-}
-/* GRID */
-.form-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 18px;
+*{
+    box-sizing:border-box;
 }
 
-/* GROUP */
-.form-group {
-  display: flex;
-  flex-direction: column;
+body{
+    font-family:"Segoe UI",sans-serif;
+
+    background:linear-gradient(135deg,#071d36,#0a2540);
+
+    margin:0;
+
+    min-height:100vh;
+
+    padding:50px;
 }
 
-/* LABEL */
-.form-group label {
-   font-size: 13px;
-  margin-bottom: 6px;
-  color: #374151; /* đậm hơn */
-  font-weight: 500;
+/* CONTAINER */
+.container{
+    max-width:1200px;
 
+    margin:auto;
+
+    background:white;
+
+    border-radius:28px;
+
+    padding:40px;
+
+    box-shadow:0 20px 60px rgba(0,0,0,0.25);
 }
 
-/* INPUT */
-.form-group input,
-.form-group select {
-  padding: 10px;
-  border-radius: 10px;
-  border: 1px solid #ddd;
-  transition: 0.2s;
+/* TITLE */
+.customer-page h2{
+    font-size:38px;
+
+    color:#082544;
+
+    margin-bottom:30px;
 }
 
-/* FOCUS */
-.form-group input:focus,
-.form-group select:focus {
-  border-color: #2563eb;
-  outline: none;
-  box-shadow: 0 0 0 2px rgba(37,99,235,0.1);
+/* TOP ACTION */
+.top-actions{
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    margin-bottom:30px;
+
+    gap:20px;
 }
 
-/* FULL WIDTH */
-.form-group.full {
-  grid-column: span 2;
+/* SEARCH */
+.search-box{
+    display:flex;
+
+    gap:12px;
+
+    flex-wrap:wrap;
+}
+
+.search-box input,
+.search-box select{
+    padding:13px 15px;
+
+    border:1px solid #d1d5db;
+
+    border-radius:12px;
+
+    font-size:14px;
+
+    outline:none;
+}
+
+.search-box button,
+.add-btn{
+    background:#2563eb;
+
+    color:white;
+
+    border:none;
+
+    padding:13px 18px;
+
+    border-radius:12px;
+
+    cursor:pointer;
+
+    font-weight:600;
+
+    text-decoration:none;
+
+    transition:0.2s;
+}
+
+.add-btn{
+    background:#16a34a;
+}
+
+.search-box button:hover{
+    background:#1d4ed8;
+}
+
+.add-btn:hover{
+    background:#15803d;
+}
+
+/* TABLE */
+table{
+    width:100%;
+
+    border-collapse:collapse;
+}
+
+th{
+    background:#082544;
+
+    color:white;
+
+    padding:18px;
+
+    text-align:left;
+}
+
+td{
+    padding:18px;
+
+    border-bottom:1px solid #f1f5f9;
+}
+
+tr:hover{
+    background:#f8fafc;
+}
+
+/* ACTION */
+.action{
+    display:flex;
+
+    gap:10px;
+}
+
+.edit{
+    background:#2563eb;
+
+    color:white;
+
+    padding:8px 14px;
+
+    border-radius:10px;
+
+    text-decoration:none;
+}
+
+.delete{
+    background:#ef4444;
+
+    color:white;
+
+    padding:8px 14px;
+
+    border-radius:10px;
+
+    text-decoration:none;
+}
+
+/* MODAL */
+.modal{
+    position:fixed;
+
+    top:0;
+    left:0;
+
+    width:100%;
+    height:100%;
+
+    background:rgba(0,0,0,0.5);
+
+    display:none;
+
+    justify-content:center;
+
+    align-items:center;
+
+    z-index:999;
+}
+
+.modal.show{
+    display:flex;
+}
+
+/* POPUP */
+.modal-content{
+    width:500px;
+
+    background:white;
+
+    border-radius:24px;
+
+    padding:35px;
+
+    box-shadow:0 20px 60px rgba(0,0,0,0.3);
+
+    animation:popup 0.25s ease;
+}
+
+/* HEADER */
+.modal-header{
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    margin-bottom:25px;
+}
+
+.modal-header h3{
+    font-size:30px;
+
+    color:#082544;
+}
+
+/* CLOSE */
+.close-btn{
+    font-size:34px;
+
+    cursor:pointer;
+
+    color:#64748b;
+}
+
+/* FORM */
+.modal-content form{
+    display:flex;
+
+    flex-direction:column;
+}
+
+.modal-content .form-group{
+    display:flex;
+
+    flex-direction:column;
+
+    margin-bottom:18px;
+}
+
+.modal-content .form-group label{
+    margin-bottom:8px;
+
+    font-weight:600;
+
+    color:#082544;
+}
+
+.modal-content .form-group input,
+.modal-content .form-group select{
+    width:100%;
+
+    padding:14px;
+
+    border:1px solid #d1d5db;
+
+    border-radius:14px;
+
+    outline:none;
+
+    font-size:15px;
+}
+
+/* SAVE BUTTON */
+.save-btn{
+    width:100%;
+
+    margin-top:10px;
+
+    background:#2563eb;
+
+    color:white;
+
+    border:none;
+
+    padding:15px;
+
+    border-radius:14px;
+
+    font-size:16px;
+
+    font-weight:600;
+
+    cursor:pointer;
+}
+
+.save-btn:hover{
+    background:#1d4ed8;
+}
+
+/* ANIMATION */
+@keyframes popup{
+
+    from{
+        transform:scale(0.9);
+        opacity:0;
+    }
+
+    to{
+        transform:scale(1);
+        opacity:1;
+    }
+
+}
+/* DELETE MODAL */
+.delete-modal{
+
+    position:fixed;
+
+    top:0;
+    left:0;
+
+    width:100%;
+    height:100%;
+
+    background:rgba(0,0,0,0.5);
+
+    display:none;
+
+    justify-content:center;
+
+    align-items:center;
+
+    z-index:9999;
+}
+
+.delete-modal.show{
+    display:flex;
+}
+
+/* BOX */
+.delete-box{
+
+    width:420px;
+
+    background:white;
+
+    border-radius:24px;
+
+    padding:35px;
+
+    text-align:center;
+
+    animation:popup 0.25s ease;
+}
+
+/* TITLE */
+.delete-box h3{
+
+    font-size:28px;
+
+    color:#082544;
+
+    margin-bottom:15px;
+}
+
+/* TEXT */
+.delete-box p{
+
+    color:#64748b;
+
+    margin-bottom:30px;
+
+    font-size:16px;
+}
+
+/* BUTTON GROUP */
+.delete-actions{
+
+    display:flex;
+
+    justify-content:center;
+
+    gap:15px;
 }
 
 /* BUTTON */
-.submit-btn {
-  grid-column: span 2;
-  padding: 14px;
-  border: none;
-  border-radius: 12px;
-  background: linear-gradient(135deg, #2563eb, #1e3a8a);
-  color: white;
-  font-size: 15px;
-  font-weight: 600;
-  cursor: pointer;
-  transition: 0.25s;
+.cancel-btn{
+
+    background:#cbd5e1;
+
+    color:#082544;
+
+    border:none;
+
+    padding:12px 22px;
+
+    border-radius:12px;
+
+    cursor:pointer;
+
+    font-weight:600;
 }
 
-.submit-btn:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 10px 20px rgba(37,99,235,0.3);
+.confirm-btn{
+
+    background:#ef4444;
+
+    color:white;
+
+    border:none;
+
+    padding:12px 22px;
+
+    border-radius:12px;
+
+    cursor:pointer;
+
+    font-weight:600;
 }

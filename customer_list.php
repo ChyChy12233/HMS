@@ -1,12 +1,18 @@
 <?php
 $conn = mysqli_connect("localhost","root","","hotel");
 
-$keyword = isset($_GET['keyword']) ? mysqli_real_escape_string($conn, $_GET['keyword']) : "";
-$type = isset($_GET['type']) ? $_GET['type'] : "";
+$keyword = isset($_GET['keyword']) 
+? mysqli_real_escape_string($conn, $_GET['keyword']) 
+: "";
+
+$type = isset($_GET['type']) 
+? $_GET['type'] 
+: "";
 
 $sql = "SELECT * FROM customer WHERE 1";
 
 if ($keyword != "") {
+
     $sql .= " AND (
         LOWER(CustomerName) LIKE LOWER('%$keyword%') 
         OR PhoneNumber LIKE '%$keyword%'
@@ -15,6 +21,7 @@ if ($keyword != "") {
 }
 
 if ($type != "") {
+
     $sql .= " AND CustomerType='$type'";
 }
 
@@ -22,77 +29,408 @@ $result = mysqli_query($conn, $sql);
 ?>
 
 <!DOCTYPE html>
-<html>
-<head>
-    <title>Danh sách khách hàng</title>
-    <link rel="stylesheet" href="common.css">
-    <link rel="stylesheet" href="customer.css">
-</head>
-</head>
+<html lang="vi">
 
-<body>
+<head>
+
+    <meta charset="UTF-8">
+
+    <title>Danh sách khách hàng</title>
+    <link rel="stylesheet" href="customer.css">
+
+</head>
 
 <body>
 
 <div class="container customer-page">
 
-<h2>Danh sách khách hàng</h2>
+    <h2>Danh sách khách hàng</h2>
 
-<a href="add_customer.php" class="add-btn">+ Thêm khách hàng</a>
+    <!-- TOP ACTION -->
+    <div class="top-actions">
 
-<!-- SEARCH + FILTER -->
-<form method="GET" class="search-box">
+        <form method="GET" class="search-box">
 
-    <input type="text" name="keyword" placeholder="Tìm khách..."
-           value="<?= $keyword ?>">
+            <input
+                type="text"
+                name="keyword"
+                placeholder="Tìm khách..."
+                value="<?= $keyword ?>"
+            >
 
-    <select name="type">
-        <option value="">-- Tất cả loại --</option>
-        <option value="Nội địa" <?= ($type=='Nội địa')?'selected':'' ?>>Nội địa</option>
-        <option value="Nước ngoài" <?= ($type=='Nước ngoài')?'selected':'' ?>>Nước ngoài</option>
-    </select>
+            <select name="type">
 
-    <button type="submit">Tìm</button>
-</form>
+                <option value="">
+                    -- Tất cả loại --
+                </option>
 
-<table>
-<tr>
+                <option
+                    value="Nội địa"
+                    <?= ($type=='Nội địa')?'selected':'' ?>
+                >
+                    Nội địa
+                </option>
+
+                <option
+                    value="Nước ngoài"
+                    <?= ($type=='Nước ngoài')?'selected':'' ?>
+                >
+                    Nước ngoài
+                </option>
+
+            </select>
+
+            <button type="submit">
+                Tìm
+            </button>
+
+        </form>
+
+        <!-- ADD BUTTON -->
+      <button
+    class="add-btn"
+    onclick="toggleForm()"
+>
+    + Thêm khách hàng
+</button>
+    </div>
+
+    <!-- TABLE -->
+    <table>
+
+        <tr>
+           <tr>
+
     <th>ID</th>
+
     <th>Tên</th>
+
     <th>SĐT</th>
+
     <th>Email</th>
-    <th>Loại</th>
+
+    <th>Số lần lưu trú</th>
+
+    <th>Tổng chi tiêu</th>
+
+    <th>Hạng KH</th>
+
     <th>Action</th>
+
 </tr>
+        </tr>
 
-<?php if (mysqli_num_rows($result) > 0): ?>
-    <?php while($row = mysqli_fetch_assoc($result)): ?>
-    <tr>
-        <td><?= $row['CustomerId'] ?></td>
-        <td><?= $row['CustomerName'] ?></td>
-        <td><?= $row['PhoneNumber'] ?></td>
-        <td><?= $row['Email'] ?></td>
-        <td><?= $row['CustomerType'] ?></td>
+        <?php if (mysqli_num_rows($result) > 0): ?>
 
-        <td class="action">
-            <a href="edit_customer.php?id=<?= $row['CustomerId'] ?>" class="edit">Sửa</a>
-            <a href="delete_customer.php?id=<?= $row['CustomerId'] ?>" 
-               class="delete"
-               onclick="return confirm('Bạn chắc chắn muốn xóa?')">
-               Xóa
-            </a>
-        </td>
-    </tr>
-    <?php endwhile; ?>
-<?php else: ?>
-    <tr>
-        <td colspan="6">Không tìm thấy khách hàng</td>
-    </tr>
-<?php endif; ?>
+            <?php while($row = mysqli_fetch_assoc($result)): ?>
 
-</table>
+            <tr>
+
+                <td><?= $row['CustomerId'] ?></td>
+
+                <td><?= $row['CustomerName'] ?></td>
+
+                <td><?= $row['PhoneNumber'] ?></td>
+
+                <td><?= $row['Email'] ?></td>
+
+                <td>
+    <?= $row['StayCount'] ?>
+</td>
+
+<td>
+    <?= number_format($row['TotalSpent']) ?>đ
+</td>
+
+<td>
+
+<?php
+
+if($row['StayCount'] >= 10){
+
+    echo '<span class="vip-badge">VIP</span>';
+}
+else if($row['StayCount'] >= 5){
+
+    echo '<span class="regular-badge">
+            Regular
+          </span>';
+}
+else{
+
+    echo '<span class="new-badge">
+            New
+          </span>';
+}
+
+?>
+
+</td>
+
+                <td class="action">
+
+                    <a
+                        href="edit_customer.php?id=<?= $row['CustomerId'] ?>"
+                        class="edit"
+                    >
+                        Sửa
+                    </a>
+
+                   <button
+    class="delete"
+    onclick="openDeleteModal()"
+>
+    Xóa
+</button>
+
+                </td>
+
+            </tr>
+
+            <?php endwhile; ?>
+
+        <?php else: ?>
+
+            <tr>
+
+                <td colspan="6">
+                    Không tìm thấy khách hàng
+                </td>
+
+            </tr>
+
+        <?php endif; ?>
+
+    </table>
 
 </div>
 
+<!-- MODAL -->
+<div id="customerModal" class="modal">
+
+    <div class="modal-content">
+
+        <div class="modal-header">
+
+            <h3>Thêm khách hàng</h3>
+
+            <span
+                class="close-btn"
+                onclick="toggleForm()"
+            >
+                ×
+            </span>
+
+        </div>
+
+        <div class="form-group">
+
+            <label>Họ tên</label>
+
+            <input type="text">
+
+        </div>
+
+        <div class="form-group">
+
+            <label>CCCD</label>
+
+            <input type="text">
+
+        </div>
+
+        <div class="form-group">
+
+            <label>SĐT</label>
+
+            <input type="text">
+
+        </div>
+
+        <div class="form-group">
+
+            <label>Email</label>
+
+            <input type="email">
+
+        </div>
+
+        <div class="form-group">
+
+            <label>Quốc tịch</label>
+
+            <select>
+
+                <option>Việt Nam</option>
+                <option>Hàn Quốc</option>
+                <option>Mỹ</option>
+
+            </select>
+
+        </div>
+
+        <div class="form-group">
+
+            <label>Phân loại KH</label>
+
+            <option value="">-- Tất cả hạng --</option>
+
+<option value="new">New</option>
+
+<option value="regular">Regular</option>
+
+<option value="vip">VIP</option>
+        </div>
+
+        <button class="save-btn">
+
+            Lưu khách hàng
+
+        </button>
+
+    </div>
+
+</div>
+
+<script>
+
+function toggleForm(){
+
+    const modal =
+    document.getElementById("customerModal");
+
+    modal.classList.toggle("show");
+
+}
+
+</script>
+<!-- MODAL -->
+<div id="customerModal" class="modal">
+
+    <div class="modal-content">
+
+        <div class="modal-header">
+
+            <h3>Thêm khách hàng</h3>
+
+            <span
+                class="close-btn"
+                onclick="toggleForm()"
+            >
+                ×
+            </span>
+
+        </div>
+
+        <form action="" method="POST">
+
+            <div class="form-grid">
+
+                <div class="form-group">
+                    <label>Họ tên</label>
+                    <input type="text" name="name">
+                </div>
+
+                <div class="form-group">
+                    <label>CCCD</label>
+                    <input type="text" name="cccd">
+                </div>
+
+                <div class="form-group">
+                    <label>SĐT</label>
+                    <input type="text" name="phone">
+                </div>
+
+                <div class="form-group">
+                    <label>Email</label>
+                    <input type="email" name="email">
+                </div>
+
+                <div class="form-group">
+                    <label>Quốc tịch</label>
+
+                    <select name="nationality">
+                        <option>Việt Nam</option>
+                        <option>Hàn Quốc</option>
+                        <option>Nhật Bản</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label>Phân loại KH</label>
+
+                    <select name="type">
+                        <option>Thường</option>
+                        <option>VIP</option>
+                    </select>
+                </div>
+
+                <button type="submit" class="submit-btn">
+                    Lưu khách hàng
+                </button>
+
+            </div>
+
+        </form>
+
+    </div>
+
+</div>
+
+<script>
+
+function toggleForm(){
+
+    const modal = document.getElementById("customerModal");
+
+    modal.classList.toggle("show");
+
+}
+
+</script>
+<!-- DELETE MODAL -->
+<div id="deleteModal" class="delete-modal">
+
+    <div class="delete-box">
+
+        <h3>Xóa khách hàng</h3>
+
+        <p>Bạn chắc chắn muốn xóa khách hàng này?</p>
+
+        <div class="delete-actions">
+
+            <button class="cancel-btn"
+                    onclick="closeDeleteModal()">
+                Hủy
+            </button>
+
+            <button class="confirm-btn">
+                Xóa
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+<script>
+
+function openDeleteModal(){
+
+    document
+        .getElementById("deleteModal")
+        .classList.add("show");
+
+}
+
+function closeDeleteModal(){
+
+    document
+        .getElementById("deleteModal")
+        .classList.remove("show");
+
+}
+
+</script>
 </body>
 </html>
