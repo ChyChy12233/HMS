@@ -24,7 +24,7 @@ if (mysqli_num_rows($result) > 0) {
         if ($user['role'] != $role) {
             echo "<script>
                 alert('Sai vai trò!');
-                window.location='index.html';
+                window.location='index.php';
             </script>";
             exit();
         }
@@ -39,14 +39,14 @@ if (mysqli_num_rows($result) > 0) {
     } else {
         echo "<script>
             alert('Sai mật khẩu!');
-            window.location='index.html';
+            window.location='index.php';
         </script>";
     }
 
 } else {
     echo "<script>
         alert('Sai tài khoản!');
-        window.location='index.html';
+        window.location='index.php';
     </script>";
 }
 ?>

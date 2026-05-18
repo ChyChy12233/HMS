@@ -22,7 +22,7 @@ $sql = "INSERT INTO users (username, password, role)
 if (mysqli_query($conn, $sql)) {
     echo "<script>
         alert('Tạo tài khoản thành công!');
-        window.location='index.html';
+        window.location='index.php';
     </script>";
 } else {
     echo "Lỗi: " . mysqli_error($conn);
