@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 session_start();
 
 if (!isset($_SESSION['user'])) {
@@ -16,7 +16,7 @@ $role = $_SESSION['role'];
     <meta charset="UTF-8">
     <title>Dashboard</title>
 
-    <link rel="stylesheet" href="dashboard.css">
+    <link rel="stylesheet" href="../dashboard.css">
     <script src="https://unpkg.com/lucide@latest"></script>
 </head>
 

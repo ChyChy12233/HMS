@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 session_start();
 
 // chỉ admin được vào
@@ -15,7 +15,7 @@ if (!isset($_SESSION['role']) || $_SESSION['role'] != 'admin') {
     <title>Tạo tài khoản</title>
 
     <!-- CSS -->
-    <link rel="stylesheet" href="create_user.css">
+    <link rel="stylesheet" href="../create_user.css">
 
     <!-- ICON -->
     <script src="https://unpkg.com/lucide@latest"></script>
