@@ -1,0 +1,23 @@
+<?php
+require_once __DIR__ . '/../config/db.php';
+
+if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
+    header('Location: staff_list.php');
+    exit;
+}
+
+$id = trim($_POST['id'] ?? '');
+if ($id === '') {
+    header('Location: staff_list.php?error=missing_id');
+    exit;
+}
+
+$stmt = $conn->prepare("DELETE FROM staff WHERE StaffId=?");
+$stmt->bind_param('s', $id);
+
+if ($stmt->execute()) {
+    header('Location: staff_list.php?ok=deleted');
+} else {
+    header('Location: staff_list.php?error=' . urlencode($stmt->error));
+}
+exit;

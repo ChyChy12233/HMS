@@ -178,7 +178,7 @@ else{
 
                    <button
     class="delete"
-    onclick="openDeleteModal()"
+    onclick="openDeleteModal('<?= e($row['CustomerId']) ?>')"
 >
     Xóa
 </button>
@@ -223,7 +223,7 @@ else{
 
         </div>
 
-        <form action="" method="POST">
+        <form action="save_customer.php" method="POST">
 
             <div class="form-grid">
 
@@ -298,25 +298,31 @@ function toggleForm(){
 
         <p>Bạn chắc chắn muốn xóa khách hàng này?</p>
 
-        <div class="delete-actions">
+        <form method="POST" action="delete_customer.php">
+            <input type="hidden" id="deleteCustomerId" name="id" value="">
 
-            <button class="cancel-btn"
-                    onclick="closeDeleteModal()">
-                Hủy
-            </button>
+            <div class="delete-actions">
 
-            <button class="confirm-btn">
-                Xóa
-            </button>
+                <button type="button" class="cancel-btn"
+                        onclick="closeDeleteModal()">
+                    Hủy
+                </button>
 
-        </div>
+                <button type="submit" class="confirm-btn">
+                    Xóa
+                </button>
+
+            </div>
+        </form>
 
     </div>
 
 </div>
 <script>
 
-function openDeleteModal(){
+function openDeleteModal(id){
+
+    document.getElementById("deleteCustomerId").value = id;
 
     document
         .getElementById("deleteModal")

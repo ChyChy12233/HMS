@@ -119,8 +119,12 @@ $result = mysqli_query($conn, $sql);
     <div><?= $row['Note'] ? $row['Note'] : '—' ?></div>
 
     <div class="action">
-        <a href="edit_room.php?id=<?= $row['RoomId'] ?>" class="edit">Sửa</a>
-        <a href="delete_room.php?id=<?= $row['RoomId'] ?>" class="delete">Xóa</a>
+        <a href="edit_room.php?id=<?= htmlspecialchars($row['RoomId']) ?>" class="edit">Sửa</a>
+        <form method="POST" action="delete_room.php" style="display:inline"
+              onsubmit="return confirm('Xóa phòng này?')">
+            <input type="hidden" name="id" value="<?= htmlspecialchars($row['RoomId']) ?>">
+            <button type="submit" class="delete">Xóa</button>
+        </form>
     </div>
 
 </div>

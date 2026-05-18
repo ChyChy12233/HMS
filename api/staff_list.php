@@ -1,4 +1,5 @@
 ﻿<?php
+require_once __DIR__ . '/../includes/helpers.php';
 $conn = mysqli_connect("localhost","root","","hotel");
 
 // LẤY KEYWORD + ROLE
@@ -75,8 +76,11 @@ $result = mysqli_query($conn, $sql);
 
                 <td class="action">
                     <a href="edit_staff.php?id=<?= $row['StaffId'] ?>" class="edit">Sửa</a>
-                    <a href="delete_staff.php?id=<?= $row['StaffId'] ?>" class="delete"
-                       onclick="return confirm('Bạn chắc chắn muốn xóa?')">Xóa</a>
+                    <form method="POST" action="delete_staff.php" style="display:inline"
+                          onsubmit="return confirm('Bạn chắc chắn muốn xóa nhân viên này?')">
+                        <input type="hidden" name="id" value="<?= e($row['StaffId']) ?>">
+                        <button type="submit" class="delete">Xóa</button>
+                    </form>
                 </td>
             </tr>
             <?php endwhile; ?>

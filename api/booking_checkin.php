@@ -449,14 +449,38 @@ if(isset($selectedCustomer) && $selectedCustomer){
 
 </select>
 
-        <!-- BUTTON -->
-        <button type="submit">
-
-            Đặt phòng
-
-        </button>
-
     </form>
+
+    <?php if($rooms): ?>
+    <!-- POST form riêng để lưu booking — GET form phía trên chỉ để lọc phòng -->
+    <form method="POST" action="save_booking.php">
+        <input type="hidden" name="CustomerId"   value="<?= htmlspecialchars($selectedCustomerId) ?>">
+        <input type="hidden" name="CheckInDate"  value="<?= htmlspecialchars($checkIn) ?>">
+        <input type="hidden" name="CheckOutDate" value="<?= htmlspecialchars($checkOut) ?>">
+        <!-- RoomId và PaymentMethod người dùng chọn ở GET form được echo lại đây -->
+        <select name="RoomId" required style="margin-bottom:8px;width:100%">
+            <option value="">-- Chọn phòng để đặt --</option>
+            <?php
+            // Re-query vì $rooms result set đã consumed ở trên
+            if ($checkIn && $checkOut && $selectedRoomType) {
+                $sqlRoom2 = "SELECT r.*, rt.RoomTypeName, rt.Price
+                             FROM room r
+                             JOIN room_type rt ON r.RoomTypeId = rt.RoomTypeId
+                             WHERE r.RoomTypeId='$selectedRoomType'
+                             AND r.RoomStatus='Phòng trống'";
+                $rooms2 = mysqli_query($conn, $sqlRoom2);
+                while ($r2 = mysqli_fetch_assoc($rooms2)):
+            ?>
+                <option value="<?= htmlspecialchars($r2['RoomId']) ?>">
+                    Phòng <?= htmlspecialchars($r2['RoomNumber']) ?> — <?= number_format($r2['Price']) ?>đ
+                </option>
+            <?php endwhile; } ?>
+        </select>
+        <button type="submit" style="width:100%;padding:10px;background:#2563eb;color:#fff;border:none;border-radius:6px;cursor:pointer;font-size:15px;">
+            Xác nhận đặt phòng
+        </button>
+    </form>
+    <?php endif; ?>
 
 </div>
 
