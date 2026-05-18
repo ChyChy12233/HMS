@@ -1,0 +1,147 @@
+* { margin: 0; padding: 0; box-sizing: border-box; font-family: "Segoe UI", Arial, sans-serif; }
+body { background: #f4f6f9; }
+
+.container {
+  padding: 24px;
+}
+
+.container h2 {
+  font-size: 22px;
+  color: #111827;
+  margin-bottom: 16px;
+}
+
+/* SEARCH BAR */
+.search-box {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-bottom: 16px;
+}
+
+.search-box input,
+.search-box select {
+  padding: 8px 12px;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  font-size: 14px;
+  background: white;
+}
+
+.search-box button {
+  padding: 8px 18px;
+  background: #0a2540;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.search-box button:hover { background: #163a60; }
+
+/* ADD BUTTON */
+.add-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 9px 18px;
+  background: #2563eb;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  text-decoration: none;
+  margin-bottom: 14px;
+}
+
+.add-btn:hover { background: #1d4ed8; }
+
+/* TABLE */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background: white;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.07);
+}
+
+th {
+  background: #0a2540;
+  color: white;
+  padding: 12px 14px;
+  font-size: 13px;
+  text-align: left;
+}
+
+td {
+  padding: 12px 14px;
+  font-size: 14px;
+  border-bottom: 1px solid #f3f4f6;
+  color: #374151;
+}
+
+tr:last-child td { border-bottom: none; }
+tr:hover td { background: #f9fafb; }
+
+/* ACTION BUTTONS */
+.action { display: flex; gap: 8px; }
+
+.edit, .delete {
+  padding: 5px 12px;
+  border-radius: 6px;
+  font-size: 13px;
+  text-decoration: none;
+  cursor: pointer;
+  border: none;
+}
+
+.edit   { background: #dbeafe; color: #1d4ed8; }
+.delete { background: #fee2e2; color: #dc2626; }
+.edit:hover   { background: #bfdbfe; }
+.delete:hover { background: #fecaca; }
+
+/* ROOM TABLE (room_list.php custom layout) */
+.room-table { margin-top: 10px; }
+
+.table-header,
+.table-row {
+  display: grid;
+  grid-template-columns: 80px 1fr 120px 140px 1fr 120px;
+  align-items: center;
+  padding: 12px 14px;
+  gap: 10px;
+  font-size: 14px;
+}
+
+.table-header {
+  background: #0a2540;
+  color: white;
+  font-weight: 600;
+  border-radius: 10px 10px 0 0;
+  font-size: 13px;
+}
+
+.table-row {
+  background: white;
+  border-bottom: 1px solid #f3f4f6;
+}
+
+.table-row:last-child { border-bottom: none; }
+.table-row:hover { background: #f9fafb; }
+
+/* ROOM STATUS BADGE */
+.status {
+  display: inline-block;
+  padding: 4px 10px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.phong-trong    { background: #d1fae5; color: #065f46; }
+.phong-dang-thue { background: #fee2e2; color: #991b1b; }
+.phong-da-dat   { background: #fef3c7; color: #92400e; }

@@ -1,0 +1,135 @@
+* { margin: 0; padding: 0; box-sizing: border-box; font-family: "Segoe UI", Arial, sans-serif; }
+body { background: #f4f6f9; }
+
+.service-container { padding: 24px; }
+.service-container h2 { font-size: 22px; color: #111827; margin-bottom: 16px; }
+
+/* TOP ACTIONS */
+.top-actions {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.top-actions input,
+.top-actions select {
+  padding: 8px 12px;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  font-size: 14px;
+  background: white;
+}
+
+.top-actions button {
+  padding: 8px 18px;
+  background: #0a2540;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.top-actions button:hover { background: #163a60; }
+
+.add-btn {
+  padding: 8px 18px;
+  background: #2563eb !important;
+  color: white !important;
+  border: none;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.add-btn:hover { background: #1d4ed8 !important; }
+
+/* LAYOUT: table only by default, form slides in */
+.service-layout {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 20px;
+  transition: 0.3s;
+}
+
+.service-layout.show-form {
+  grid-template-columns: 1fr 340px;
+}
+
+/* TABLE */
+.service-table table {
+  width: 100%;
+  border-collapse: collapse;
+  background: white;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.07);
+}
+
+.service-table th {
+  background: #0a2540;
+  color: white;
+  padding: 12px 14px;
+  font-size: 13px;
+  text-align: left;
+}
+
+.service-table td {
+  padding: 12px 14px;
+  font-size: 14px;
+  border-bottom: 1px solid #f3f4f6;
+  color: #374151;
+}
+
+.service-table tr:last-child td { border-bottom: none; }
+.service-table tr:hover td { background: #f9fafb; }
+
+/* STATUS */
+.active   { display: inline-block; padding: 4px 10px; border-radius: 20px; font-size: 12px; font-weight: 600; background: #d1fae5; color: #065f46; }
+.inactive { display: inline-block; padding: 4px 10px; border-radius: 20px; font-size: 12px; font-weight: 600; background: #f3f4f6; color: #6b7280; }
+
+/* ACTION BUTTONS */
+.edit-btn   { padding: 5px 12px; background: #dbeafe; color: #1d4ed8; border-radius: 6px; font-size: 13px; text-decoration: none; margin-right: 4px; }
+.delete-btn { padding: 5px 12px; background: #fee2e2; color: #dc2626; border-radius: 6px; font-size: 13px; text-decoration: none; }
+.edit-btn:hover   { background: #bfdbfe; }
+.delete-btn:hover { background: #fecaca; }
+
+/* SIDE FORM */
+.service-form {
+  display: none;
+  background: white;
+  border-radius: 16px;
+  padding: 22px;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.07);
+  flex-direction: column;
+  gap: 14px;
+  align-self: start;
+}
+
+.service-layout.show-form .service-form {
+  display: flex;
+}
+
+.service-form h3 { font-size: 16px; font-weight: 700; color: #0a2540; margin-bottom: 4px; }
+
+.form-group { display: flex; flex-direction: column; gap: 6px; }
+.form-group label { font-size: 13px; font-weight: 600; color: #374151; }
+.form-group input,
+.form-group select { padding: 9px 12px; border: 1px solid #d1d5db; border-radius: 8px; font-size: 14px; }
+
+.save-btn {
+  padding: 11px;
+  background: #0a2540;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  margin-top: 6px;
+}
+
+.save-btn:hover { background: #163a60; }
